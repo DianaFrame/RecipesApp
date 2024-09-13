@@ -33,10 +33,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
-
+    implementation(project(path = ":domain"))
+    implementation(project(path = ":data"))
+    implementation(libs.dotlottie.android)
+    implementation(libs.fragment.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.picasso)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
