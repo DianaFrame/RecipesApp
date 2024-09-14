@@ -4,7 +4,7 @@ import com.example.domain.RecipesRepository
 import com.example.domain.models.DetailsRecipe
 
 class GetDetailsRecipe(private val recipesRepository: RecipesRepository) {
-    fun execute(): DetailsRecipe {
-        return recipesRepository.getDetails()
+    suspend fun execute(id: Int): DetailsRecipe?{
+        return recipesRepository.getDetailsById(id = id)
     }
 }

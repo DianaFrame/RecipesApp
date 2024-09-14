@@ -5,8 +5,11 @@ import com.example.domain.models.RecipesList
 
 interface RecipesRepository {
 
-    fun getList(): RecipesList
+    suspend fun getList(): RecipesList?
 
-    fun getDetails(): DetailsRecipe
+    suspend fun getDetailsById(id: Int): DetailsRecipe?
+
+    suspend fun getSearchListByName(name: String): RecipesList?
+
 
 }

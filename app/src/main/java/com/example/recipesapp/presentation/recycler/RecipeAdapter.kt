@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.domain.models.RecipesListItem
 import com.example.recipesapp.R
 
-class RecipeAdapter : ListAdapter<RecipesListItem, RecipeViewHolder>(Comparator()) {
+class RecipeAdapter(private val listener: Listener) : ListAdapter<RecipesListItem, RecipeViewHolder>(Comparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val view = LayoutInflater
             .from(parent.context)
@@ -15,7 +15,9 @@ class RecipeAdapter : ListAdapter<RecipesListItem, RecipeViewHolder>(Comparator(
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        return holder.bind(getItem(position))
+        return holder.bind(
+            recipesListItem = getItem(position),
+            listener = listener)
     }
 
 }

@@ -1,6 +1,6 @@
 package com.example.data.models
 
-data class Recipe(
+data class DetailsRecipeById(
     val caloriesPerServing: Int,
     val cookTimeMinutes: Int,
     val cuisine: String,
