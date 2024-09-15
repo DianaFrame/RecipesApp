@@ -26,16 +26,26 @@ class InfoDishFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         dataModel.recipe.observe(activity as LifecycleOwner){
             binding.apply {
-                name.text = it?.name
-                mealType.text = it?.mealType.toString()
-                prepTimeMinutes.text = it?.prepTimeMinutes.toString()
-                cookTimeMinutes.text = it?.cookTimeMinutes.toString()
-                servings.text = it?.servings.toString()
-                difficulty.text = it?.difficulty
-                cuisine.text = it?.cuisine
-                tags.text = it?.tags.toString()
-                rating.text = it?.rating.toString()
-                caloriesPerServing.text = it?.caloriesPerServing.toString()
+                var text = "${getString(R.string.dish_name)} ${it?.name}"
+                name.text = text
+                text = "${getString(R.string.meal_type)} ${it?.mealType.toString()}"
+                mealType.text = text
+                text = "${getString(R.string.prep_time_minutes)} ${it?.prepTimeMinutes.toString()}"
+                prepTimeMinutes.text = text
+                text = "${getString(R.string.cook_time_minutes)} ${it?.cookTimeMinutes.toString()}"
+                cookTimeMinutes.text = text
+                text = "${getString(R.string.servings)} ${it?.servings.toString()}"
+                servings.text = text
+                text = "${getString(R.string.difficulty)} ${it?.difficulty}"
+                difficulty.text = text
+                text = "${getString(R.string.cuisine)} ${it?.cuisine}"
+                cuisine.text = text
+                text = "${getString(R.string.tags)} ${it?.tags.toString()}"
+                tags.text = text
+                text = "${getString(R.string.rating)} ${it?.rating.toString()}"
+                rating.text = text
+                text = "${getString(R.string.calories_per_serving)} ${it?.caloriesPerServing.toString()}"
+                caloriesPerServing.text = text
             }
         }
     }

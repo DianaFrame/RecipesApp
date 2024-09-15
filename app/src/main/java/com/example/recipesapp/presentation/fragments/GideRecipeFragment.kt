@@ -26,8 +26,10 @@ class GideRecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         dataModel.recipe.observe(activity as LifecycleOwner){
             binding.apply {
-                instructions.text = it?.instructions.toString()
-                ingredients.text = it?.ingredients.toString()
+                var text = "${getString(R.string.instructions)} ${it?.instructions.toString()}"
+                instructions.text = text
+                text = "${getString(R.string.ingredients)} ${it?.ingredients.toString()}"
+                ingredients.text = text
             }
         }
     }
