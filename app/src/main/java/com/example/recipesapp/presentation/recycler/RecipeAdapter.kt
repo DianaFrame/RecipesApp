@@ -17,7 +17,8 @@ class RecipeAdapter(private val listener: Listener) : ListAdapter<RecipesListIte
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         return holder.bind(
             recipesListItem = getItem(position),
-            listener = listener)
+            listener = listener
+        )
     }
 
 }
