@@ -17,7 +17,7 @@ import com.example.recipesapp.presentation.recycler.RecipeAdapter
 
 class RecipesListFragment : Fragment(), Listener {
     private lateinit var binding: FragmentRecipesListBinding
-    private val dataModel: DataModel by activityViewModels()
+    private val dataModel: DataModel by activityViewModels { DataModel.Factory }
     private val adapter: RecipeAdapter? by lazy { RecipeAdapter(this) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,7 +76,7 @@ class RecipesListFragment : Fragment(), Listener {
     }
 
     override fun onClick(id: Int) {
-        dataModel.recipeId.value = id
+        dataModel.selectRecipe(id = id)
         val controller = findNavController()
         controller.navigate(R.id.detailsRecipeFragment)
     }

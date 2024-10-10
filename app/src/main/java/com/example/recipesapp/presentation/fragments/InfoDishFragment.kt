@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.FragmentInfoDishBinding
 
 class InfoDishFragment : Fragment() {
 
     private lateinit var binding: FragmentInfoDishBinding
-    private val dataModel: DataModel by activityViewModels()
+    private val dataModel: DataModel by activityViewModels { DataModel.Factory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +23,7 @@ class InfoDishFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        dataModel.recipe.observe(activity as LifecycleOwner){
+        dataModel.recipe.observe(viewLifecycleOwner) {
             binding.apply {
                 var text = "${getString(R.string.dish_name)} ${it?.name}"
                 name.text = text
@@ -44,7 +43,8 @@ class InfoDishFragment : Fragment() {
                 tags.text = text
                 text = "${getString(R.string.rating)} ${it?.rating.toString()}"
                 rating.text = text
-                text = "${getString(R.string.calories_per_serving)} ${it?.caloriesPerServing.toString()}"
+                text =
+                    "${getString(R.string.calories_per_serving)} ${it?.caloriesPerServing.toString()}"
                 caloriesPerServing.text = text
             }
         }
