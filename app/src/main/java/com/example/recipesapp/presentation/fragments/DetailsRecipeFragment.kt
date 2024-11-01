@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import com.airbnb.lottie.LottieDrawable
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.FragmentDetailsRecipeBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class DetailsRecipeFragment : Fragment() {
     private lateinit var binding: FragmentDetailsRecipeBinding
-    private val dataModel: DataModel by activityViewModels { DataModel.Factory }
+    private val dataModel by activityViewModel<DataModel>()
     private val fragmentList = listOf(
         InfoDishFragment.newInstance(),
         GideRecipeFragment.newInstance()

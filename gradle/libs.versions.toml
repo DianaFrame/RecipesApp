@@ -1,23 +1,26 @@
 [versions]
-agp = "8.4.2"
-kotlin = "1.9.0"
-coreKtx = "1.13.1"
+agp = "8.6.1"
+kotlin = "2.0.20"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.2"
-constraintlayout = "2.1.4"
+activity = "1.9.3"
+constraintlayout = "2.2.0"
 jetbrainsKotlinJvm = "1.9.0"
-navigationFragmentKtx = "2.8.0"
-navigationUiKtx = "2.8.0"
+navigationFragmentKtx = "2.8.3"
+navigationUiKtx = "2.8.3"
 picasso = "2.8"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
-fragment = "1.8.3"
-lifecycle = "2.8.5"
+fragment = "1.8.5"
+lifecycle = "2.8.7"
 lottie = "6.5.2"
+koin = "4.0.0"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +41,10 @@ logging-interceptor = {group = "com.squareup.okhttp3", name = "logging-intercept
 fragment-ktx = {group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment"}
 lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle"}
 lottie = {group = "com.airbnb.android", name = "lottie", version.ref = "lottie"}
+koin-android = {group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
+koin-core = {group = "io.insert-koin", name = "koin-core", version.ref = "koin"}
+koin-test = {group = "io.insert-koin", name = "koin-test", version.ref = "koin"}
+
 
 
 [plugins]

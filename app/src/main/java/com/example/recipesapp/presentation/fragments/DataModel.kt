@@ -3,9 +3,7 @@ package com.example.recipesapp.presentation.fragments
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.data.RecipesRepositoryImpl
 import com.example.domain.models.DetailsRecipe
 import com.example.domain.models.RecipesList
 import com.example.domain.usecases.GetDetailsRecipe
@@ -20,25 +18,6 @@ class DataModel(
     private val getDetailsRecipe: GetDetailsRecipe,
 
     ) : ViewModel() {
-
-    companion object {
-        @Suppress("UNCHECKED_CAST")
-        val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
-            private val recipesRepositoryImpl = RecipesRepositoryImpl()
-            private val getSearchRecipesList = GetSearchRecipesList(recipesRepositoryImpl)
-            private val getRecipesList = GetRecipesList(recipesRepositoryImpl)
-            private val getDetailsRecipe = GetDetailsRecipe(recipesRepositoryImpl)
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return DataModel(
-                    getSearchRecipesList = getSearchRecipesList,
-                    getRecipesList = getRecipesList,
-                    getDetailsRecipe = getDetailsRecipe
-                ) as T
-            }
-        }
-    }
-
-
     private val recipeIdMutable: MutableLiveData<Int> by lazy {
         MutableLiveData<Int>()
     }

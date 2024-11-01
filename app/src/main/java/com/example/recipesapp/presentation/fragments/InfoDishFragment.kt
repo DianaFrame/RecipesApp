@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import com.example.recipesapp.R
 import com.example.recipesapp.databinding.FragmentInfoDishBinding
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class InfoDishFragment : Fragment() {
 
     private lateinit var binding: FragmentInfoDishBinding
-    private val dataModel: DataModel by activityViewModels { DataModel.Factory }
+    private val dataModel by activityViewModel<DataModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
