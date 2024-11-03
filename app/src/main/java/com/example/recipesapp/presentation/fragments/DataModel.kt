@@ -6,16 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.DetailsRecipe
 import com.example.domain.models.RecipesList
-import com.example.domain.usecases.GetDetailsRecipe
-import com.example.domain.usecases.GetRecipesList
-import com.example.domain.usecases.GetSearchRecipesList
+import com.example.domain.usecases.GetDetailsRecipeUseCase
+import com.example.domain.usecases.GetRecipesListUseCase
+import com.example.domain.usecases.GetSearchRecipesListUseCase
 import kotlinx.coroutines.launch
 
 class DataModel(
 
-    private val getSearchRecipesList: GetSearchRecipesList,
-    private val getRecipesList: GetRecipesList,
-    private val getDetailsRecipe: GetDetailsRecipe,
+    private val getSearchRecipesListUseCase: GetSearchRecipesListUseCase,
+    private val getRecipesListUseCase: GetRecipesListUseCase,
+    private val getDetailsRecipeUseCase: GetDetailsRecipeUseCase,
 
     ) : ViewModel() {
     private val recipeIdMutable: MutableLiveData<Int> by lazy {
@@ -38,7 +38,7 @@ class DataModel(
     fun search(newText: String?) {
         viewModelScope.launch {
             loadStatusMutable.value = true
-            recipesListMutable.value = newText?.let { getSearchRecipesList.execute(it) }
+            recipesListMutable.value = newText?.let { getSearchRecipesListUseCase.execute(it) }
             loadStatusMutable.value = false
 
         }
@@ -47,7 +47,7 @@ class DataModel(
     fun getList() {
         viewModelScope.launch {
             loadStatusMutable.value = true
-            recipesListMutable.value = getRecipesList.execute()
+            recipesListMutable.value = getRecipesListUseCase.execute()
             loadStatusMutable.value = false
         }
     }
@@ -55,7 +55,7 @@ class DataModel(
     fun getDetails(id: Int) {
         viewModelScope.launch {
             loadStatusMutable.value = true
-            recipeMutable.value = getDetailsRecipe.execute(id = id)
+            recipeMutable.value = getDetailsRecipeUseCase.execute(id = id)
             loadStatusMutable.value = false
         }
     }

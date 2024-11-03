@@ -7,9 +7,9 @@ import org.koin.dsl.module
 val appModule = module {
     viewModel<DataModel> {
         DataModel(
-            getDetailsRecipe = get(),
-            getRecipesList = get(),
-            getSearchRecipesList = get()
+            getDetailsRecipeUseCase = get(),
+            getRecipesListUseCase = get(),
+            getSearchRecipesListUseCase = get()
         )
     }
 }
